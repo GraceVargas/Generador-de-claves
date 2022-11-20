@@ -4,19 +4,12 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GraceVargas/Generador-de-claves.git"
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/GraceVargas/Generador-de-claves/issues"
-  },
-  "homepage": "https://github.com/GraceVargas/Generador-de-claves#readme",
+  "homepage": "https://gracevargas.github.io/generadordeclaves",
   "dependencies": {
     "gh-pages": "^4.0.0"
   }
