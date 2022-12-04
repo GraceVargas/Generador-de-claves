@@ -48,21 +48,21 @@ divWrapper.appendChild(divPasswordGenerated);
 divWrapper.appendChild(divPasswordProperty);
 divContainer.appendChild(divWrapper);
 document.body.appendChild(divContainer);
-var finalValues = {
-    caracteres: caracteres,
-    long: null,
-    rule: null,
-    char: []
-};
 var caracteres = {
     numeros: "0123456789",
     simbolos: "!@#$%^&*()",
     mayusculas: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     minusculas: "abcdefghijklmnopqrstuvwxyz"
 };
-var charLength = [12, 9, 6];
-var optionRules = ["Solo letras", "Lectura simple", "Todos los caracteres"];
-var charType = ["Mayusculas", "Minusculas", "Numeros", "Simbolos"];
+var finalValues = {
+    caracteres: caracteres,
+    long: null,
+    rule: null,
+    char: []
+};
+var charLength = [6, 9, 12];
+var optionRules = ["Sólo letras", "Lectura simple", "Todos los caracteres"];
+var charType = ["Mayúsculas", "Minúsculas", "Números", "Símbolos"];
 var createFieldset = function (array, name, type, title) {
     var form = document.createElement("form");
     divForm.appendChild(form);
@@ -96,20 +96,22 @@ var createFieldset = function (array, name, type, title) {
         input.addEventListener('change', function (e) {
             e.preventDefault();
             var target = e.target;
-            if (target.value === "Solo letras") {
-                document.getElementById('Simbolos').removeAttribute('checked');
-                document.getElementById('Numeros').removeAttribute('checked');
-                document.getElementById('Simbolos').setAttribute('disabled', 'true');
-                document.getElementById('Numeros').setAttribute('disabled', 'true');
+            var simbolosInput = document.getElementById('Símbolos');
+            var numerosInput = document.getElementById('Números');
+            if (target.value === "Sólo letras") {
+                simbolosInput.checked = false;
+                numerosInput.checked = false;
+                simbolosInput.setAttribute('disabled', 'true');
+                numerosInput.setAttribute('disabled', 'true');
             }
             else if (target.value === "Lectura simple") {
-                document.getElementById('Simbolos').removeAttribute('checked');
-                document.getElementById('Simbolos').setAttribute('disabled', 'true');
-                document.getElementById('Numeros').removeAttribute('disabled');
+                simbolosInput.checked = false;
+                simbolosInput.setAttribute('disabled', 'true');
+                numerosInput.removeAttribute('disabled');
             }
             else if (target.value === "Todos los caracteres") {
-                document.getElementById('Numeros').removeAttribute('disabled');
-                document.getElementById('Simbolos').removeAttribute('disabled');
+                numerosInput.removeAttribute('disabled');
+                simbolosInput.removeAttribute('disabled');
             }
             switch (name) {
                 case 'length':
@@ -140,16 +142,16 @@ var generarContrasenia = function (finalValues) {
     for (var _i = 0, _a = finalValues.char; _i < _a.length; _i++) {
         var value = _a[_i];
         switch (value) {
-            case "Mayusculas":
+            case "Mayúsculas":
                 caracteresFinales += caracteres.mayusculas;
                 break;
-            case "Minusculas":
+            case "Minúsculas":
                 caracteresFinales += caracteres.minusculas;
                 break;
-            case "Numeros":
+            case "Números":
                 caracteresFinales += caracteres.numeros;
                 break;
-            case "Simbolos":
+            case "Símbolos":
                 caracteresFinales += caracteres.simbolos;
                 break;
         }
