@@ -70,6 +70,7 @@ body {
 
 .page-title{
   font-size: 3em;
+  text-align: center;
 }
 
 fieldset{
@@ -87,18 +88,18 @@ h2{
     }
 
     .box {
-        width:200px;
+        width:310px;
     }
 
     .box-form{
         display: flex;
         flex-direction: column;
-        max-height:700px ;
+        max-height: 700px ;
     }
 
     .control-style {
-        font-size:10px;
-        margin-right:0px;
+        font-size: 24px;
+        margin-right: 0px;
   
     }
     .box-property{
@@ -134,7 +135,7 @@ h2{
    }
 
    .control-style {
-       font-size: 10px;
+       font-size: 14px;
        margin-right:0px;
    }
 }

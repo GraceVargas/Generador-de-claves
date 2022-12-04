@@ -66,9 +66,9 @@ const finalValues = {
   char: [],
 };
 
-const charLength = [12, 9, 6];
-const optionRules = ["Solo letras", "Lectura simple", "Todos los caracteres"];
-const charType = ["Mayusculas", "Minusculas", "Numeros", "Simbolos"];
+const charLength = [6, 9, 12];
+const optionRules = ["Sólo letras", "Lectura simple", "Todos los caracteres"];
+const charType = ["Mayúsculas", "Minúsculas", "Números", "Símbolos"];
 
 const createFieldset = (array: any[], name: string, type: string, title: string) => {
   const form = document.createElement("form");
@@ -107,19 +107,22 @@ const createFieldset = (array: any[], name: string, type: string, title: string)
         input.addEventListener('change', (e: Event) => {
             e.preventDefault();
             const target = e.target as HTMLInputElement;
+
+            const simbolosInput = document.getElementById('Símbolos') as HTMLInputElement;
+            const numerosInput = document.getElementById('Números') as HTMLInputElement;
             
-            if (target.value === "Solo letras") {
-              document.getElementById('Simbolos')?.removeAttribute('checked');
-              document.getElementById('Numeros')?.removeAttribute('checked');
-                document.getElementById('Simbolos')?.setAttribute('disabled', 'true');
-                document.getElementById('Numeros')?.setAttribute('disabled', 'true');
+            if (target.value === "Sólo letras") {
+              simbolosInput.checked = false;
+              numerosInput.checked = false;
+              simbolosInput.setAttribute('disabled', 'true');
+                numerosInput.setAttribute('disabled', 'true');
             } else if (target.value === "Lectura simple") {
-              document.getElementById('Simbolos')?.removeAttribute('checked');
-                document.getElementById('Simbolos')?.setAttribute('disabled', 'true');
-                document.getElementById('Numeros')?.removeAttribute('disabled');   
+              simbolosInput.checked = false;
+              simbolosInput.setAttribute('disabled', 'true');
+              numerosInput.removeAttribute('disabled');   
             } else if (target.value === "Todos los caracteres") {
-              document.getElementById('Numeros')?.removeAttribute('disabled');
-              document.getElementById('Simbolos')?.removeAttribute('disabled');
+              numerosInput.removeAttribute('disabled');
+              simbolosInput.removeAttribute('disabled');
             }
 
             switch(name) {
@@ -144,16 +147,16 @@ const generarContrasenia = (finalValues) => {
   let passwordFinal = [];
   for (let value of finalValues.char) {
     switch (value) {
-      case "Mayusculas":
+      case "Mayúsculas":
         caracteresFinales += caracteres.mayusculas;
         break;
-      case "Minusculas":
+      case "Minúsculas":
         caracteresFinales += caracteres.minusculas;
         break;
-      case "Numeros":
+      case "Números":
         caracteresFinales += caracteres.numeros;
         break;
-      case "Simbolos":
+      case "Símbolos":
         caracteresFinales += caracteres.simbolos;
         break;
     }
